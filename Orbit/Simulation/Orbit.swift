@@ -11,7 +11,7 @@ import simd
 
 struct Orbit {
     
-    static let g = 6.67e-11
+    static let g = 6.67259e-11
     
     let body: Body
     var position: double2

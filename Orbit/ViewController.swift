@@ -52,8 +52,9 @@ class OrbitScene: SKScene {
     let map: vector_double2
     
     override init(size: CGSize) {
-        map = vector_double2(Double(size.width) / 2.0 / 2.2790e+11, Double(size.height) / 2.0 / 2.2790e+11)
-        system = System(orbits: System.innerPlanets, nBody: Newtonian())
+        let radius: Double = 4.4983964e+12
+        map = vector_double2(Double(size.width) / 2.0 / radius, Double(size.height) / 2.0 / radius)
+        system = System(orbits: System.solarSystem, nBody: Newtonian())
 
         self.orbits = system.orbits.map({ OrbitingNode(orbit: $0) })
 
@@ -77,7 +78,7 @@ class OrbitScene: SKScene {
         
         system.simulate(end: 25000.0, dt: 25000)
         
-        debugPrint("\(currentTime)")
+//        debugPrint("\(currentTime)")
         
         for orbit in orbits {
             
